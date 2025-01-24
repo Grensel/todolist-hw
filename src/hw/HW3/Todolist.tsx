@@ -1,8 +1,6 @@
 import React, { ChangeEvent, KeyboardEvent, useRef, useState } from "react";
 import { FilterValuesType } from "./HomeWork01-3";
 import { S } from "../components/TodolistItem_Styles";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
-
 type TaskType = {
   id: string;
   title: string;
@@ -31,8 +29,6 @@ export const Todolist: React.FC<PropsType> = ({ children, ...props }) => {
     }
   };
 
-  const [listRef] = useAutoAnimate<HTMLUListElement>();
-
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.currentTarget.value);
   };
@@ -58,7 +54,7 @@ export const Todolist: React.FC<PropsType> = ({ children, ...props }) => {
         />
         <button onClick={addTask}>+</button>
       </div>
-      <ul ref={listRef}>
+      <ul>
         {props.tasks.map((t) => {
           const onClickHandler = () => props.removeTask(t.id);
 
